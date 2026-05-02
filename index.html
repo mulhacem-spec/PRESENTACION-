@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modalidades de Contratación Laboral - Lidia Páez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003366;
+            --accent: #D4AF37;
+            --bg: #F4F7F9;
+            --text: #111111;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Open Sans', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0; width: 100%; height: 8px;
+            background: #ddd;
+            z-index: 1000;
+        }
+        #progress-bar {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .viewport {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .slide {
+            display: none;
+            width: 95%;
+            max-width: 1400px;
+            height: 85vh;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            padding: 50px;
+            border-top: 15px solid var(--primary);
+            flex-direction: column;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
+        .slide.active { display: flex; }
+
+        h1 { font-family: 'Montserrat', sans-serif; font-size: 55px; color: var(--primary); margin-bottom: 20px; line-height: 1.1; }
+        h2 { font-family: 'Montserrat', sans-serif; font-size: 42px; color: var(--primary); border-bottom: 5px solid var(--accent); padding-bottom: 15px; margin-bottom: 30px; }
+        h3 { font-family: 'Montserrat', sans-serif; font-size: 28px; color: var(--accent); margin-bottom: 15px; }
+
+        .content-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            flex: 1;
+            align-items: start;
+            overflow-y: auto;
+        }
+
+        .text-box { font-size: 26px; line-height: 1.6; color: var(--text); }
+        .text-box p { margin-bottom: 25px; }
+        .text-box ul { list-style: none; }
+        .text-box li { margin-bottom: 18px; padding-left: 45px; position: relative; }
+        .text-box li::before { 
+            content: "\f058"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+            position: absolute; left: 0; color: var(--accent); font-size: 30px;
+        }
+
+        .info-card {
+            background: #f8fafc;
+            border-left: 8px solid var(--accent);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .img-container {
+            width: 100%;
+            height: 100%;
+            max-height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+        .controls {
+            background: var(--primary);
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 80px;
+            color: white;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px 45px;
+            font-size: 22px;
+            font-weight: 800;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover:not(:disabled) { background: #b8962d; transform: translateY(-3px); }
+        .btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .slide-num { font-size: 24px; font-weight: 700; letter-spacing: 5px; }
+
+        @media (max-width: 1100px) {
+            .content-layout { grid-template-columns: 1fr; }
+            .img-container { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="progress-container"><div id="progress-bar"></div></div>
+
+<div class="viewport">
+
+    <!-- 1. PORTADA -->
+    <div class="slide active">
+        <div style="text-align: center; margin: auto;">
+            <h3 style="letter-spacing: 10px;">TRABAJO ACADÉMICO</h3>
+            <h1>MODALIDADES DE CONTRATACIÓN LABORAL EN ESPAÑA</h1>
+            <div style="width: 200px; height: 8px; background: var(--accent); margin: 40px auto;"></div>
+            <p style="font-size: 45px; font-weight: 800; color: var(--primary);">Lidia Páez</p>
+            <p style="font-size: 28px; font-weight: 600; color: #666; margin-top: 10px;">TCAE - Curso 2025/2026</p>
+        </div>
+    </div>
+
+    <!-- 2. DEFINICIÓN -->
+    <div class="slide">
+        <div class="content-layout">
+            <div class="text-box">
+                <h2>1. El Contrato de Trabajo</h2>
+                <p>Es el acuerdo voluntario entre un <strong>trabajador</strong> y un <strong>empresario</strong>.</p>
+                <div class="info-card">
+                    <p>El trabajador presta servicios por cuenta ajena, bajo la dirección del empresario, a cambio de una retribución (salario).</p>
+                </div>
+                <p>Puede formalizarse por escrito o de palabra (salvo excepciones legales).</p>
+            </div>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800" alt="[Imagen de hospital moderno]">
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. INDEFINIDOS - IMAGEN CORREGIDA -->
+    <div class="slide">
+        <div class="content-layout">
+            <div class="text-box">
+                <h2>2. Contratos Indefinidos</h2>
+                <p>Es la modalidad de contratación preferente en el sistema español.</p>
+                <ul>
+                    <li><strong>Concepto:</strong> No establece una fecha de finalización.</li>
+                    <li><strong>Características:</strong> Estabilidad laboral y fomento de la calidad del empleo.</li>
+                    <li><strong>Duración:</strong> Permanente, hasta que alguna parte decida rescindirlo.</li>
+                </ul>
+            </div>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800" alt="[Imagen de contrato y apretón de manos]">
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. FIJO DISCONTINUO -->
+    <div class="slide">
+        <div class="content-layout">
+            <div class="text-box">
+                <h2>3. Fijo-Discontinuo</h2>
+                <p>Es un contrato <strong>indefinido</strong> pero para trabajos que no se realizan todo el año.</p>
+                <div class="info-card">
+                    <p><strong>Concepto:</strong> Se utiliza para actividades de temporada o cíclicas (turismo, agricultura, comedores escolares).</p>
+                </div>
+                <p>El trabajador tiene derecho a ser llamado cada vez que se reinicie la actividad.</p>
+            </div>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1574607383476-f517f260d30b?auto=format&fit=crop&q=80&w=800" alt="[Imagen de comedor escolar]">
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. TEMPORALES: PRODUCCIÓN -->
+    <div class="slide">
+        <div class="content-layout">
+            <div class="text-box">
+                <h2>4. Temporales: Producción</h2>
+                <p>Se utiliza ante el incremento ocasional e imprevisible de la actividad.</p>
+                <ul>
+                    <li><strong>Casos:</strong> Oscilaciones de la demanda o picos de producción (ej: Rebajas o Navidad).</li>
+                    <li><strong>Duración:</strong> Máximo 6 meses (ampliable a 1 año por convenio).</li>
+                </ul>
+            </div>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=800" alt="[Imagen de ventas y rebajas]">
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. TEMPORALES: SUSTITUCIÓN -->
+    <div class="slide">
+        <div class="content-layout">
+            <div class="text-box">
+                <h2>5. Temporales: Sustitución</h2>
+                <p>Su fin es cubrir el puesto de una persona que tiene derecho a reserva del mismo.</p>
+                <ul>
+                    <li><strong>Casos:</strong> Bajas por maternidad, incapacidad temporal (enfermedad) o procesos de selección.</li>
+                </ul>
+                <div class="info-card" style="background: #fee2e2; border-color: #ef4444;">
+                    <p><strong>¡IMPORTANTE!</strong> Si un trabajador suma más de <strong>18 meses</strong> de contratos temporales en <strong>24 meses</strong>, se convierte en <strong>FIJO</strong>.</p>
+                </div>
+            </div>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&q=80&w=800" alt="[Imagen de enfermera atendiendo]">
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. FORMATIVO: ALTERNANCIA -->
+    <div class="slide">
+        <div class="content-layout">
+            <div class="text-box">
+                <h2>6. Formación en Alternancia</h2>
+                <p>Combina el trabajo retribuido con procesos formativos.</p>
+                <ul style="font-size: 22px;">
+                    <li><strong>Requisitos:</strong> Sin límite de edad (generalmente hasta 30 años).</li>
+                    <li><strong>Duración:</strong> De 3 meses a 2 años.</li>
+                    <li><strong>Formación:</strong> Mínimo 35% el 1º año y 15% el 2º año.</li>
+                    <li><strong>Retribución:</strong> Según convenio (mínimo 60%-75%).</li>
+                </ul>
+            </div>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" alt="[Imagen de formación práctica]">
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. FORMATIVO: PRÁCTICA -->
+    <div class="slide">
+        <div class="content-layout">
+            <div class="text-box">
+                <h2>7. Práctica Profesional</h2>
+                <p>Para quienes ya poseen un título oficial.</p>
+                <ul>
+                    <li><strong>Requisitos:</strong> Título obtenido en los últimos 3 años (5 años para discapacidad).</li>
+                    <li><strong>Duración:</strong> Mínimo 6 meses y máximo 1 año.</li>
+                    <li><strong>Fin:</strong> Adquirir experiencia práctica adecuada al nivel de estudios (ej: TCAE en clínica).</li>
+                </ul>
+            </div>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800" alt="[Imagen de auxiliar sanitario joven]">
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. TIEMPO PARCIAL -->
+    <div class="slide">
+        <div class="content-layout">
+            <div class="text-box">
+                <h2>8. Tiempo Parcial</h2>
+                <p>Jornada inferior a la de un trabajador a tiempo completo comparable.</p>
+                <div class="info-card">
+                    <p><strong>Requisitos:</strong> Debe constar obligatoriamente por escrito indicando el número de horas y su distribución.</p>
+                </div>
+            </div>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800" alt="[Imagen de planificación de horario]">
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. RELEVO Y JUBILACIÓN - IMAGEN CORREGIDA -->
+    <div class="slide">
+        <div class="content-layout">
+            <div class="text-box">
+                <h2>9. Relevo y Jubilación Parcial</h2>
+                <p><strong>Jubilación Parcial:</strong> Reducción de jornada para jubilarse poco a poco.</p>
+                <p><strong>Contrato de Relevo:</strong> Se contrata a alguien para cubrir las horas que deja el jubilado.</p>
+                <ul>
+                    <li><strong>Requisito:</strong> El nuevo trabajador debe tener un puesto acorde al del jubilado.</li>
+                </ul>
+            </div>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1556742111-a301076d9d18?auto=format&fit=crop&q=80&w=800" alt="[Imagen de apoyo a personas mayores en oficina]">
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. CIERRE -->
+    <div class="slide">
+        <div style="text-align: center; margin: auto;">
+            <i class="fas fa-hospital-user" style="font-size: 100px; color: var(--accent); margin-bottom: 30px;"></i>
+            <h1>MUCHAS GRACIAS</h1>
+            <div style="width: 150px; height: 6px; background: var(--accent); margin: 40px auto;"></div>
+            <p style="font-size: 35px; font-weight: 800; color: var(--primary);">Lidia Páez | TCAE 2026</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="controls">
+    <button class="btn" id="prevBtn">ANTERIOR</button>
+    <div class="slide-num"><span id="pageCurr">1</span> / 11</div>
+    <button class="btn" id="nextBtn">SIGUIENTE</button>
+</div>
+
+<script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    const progressBar = document.getElementById('progress-bar');
+    const pageLabel = document.getElementById('pageCurr');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+
+    function update() {
+        slides.forEach((s, i) => s.classList.toggle('active', i === current));
+        pageLabel.innerText = current + 1;
+        progressBar.style.width = ((current + 1) / total) * 100 + "%";
+        prevBtn.disabled = current === 0;
+        nextBtn.innerText = (current === total - 1) ? "INICIO" : "SIGUIENTE";
+    }
+
+    nextBtn.onclick = () => { current = (current + 1) % total; update(); };
+    prevBtn.onclick = () => { current = (current - 1 + total) % total; update(); };
+
+    document.onkeydown = (e) => {
+        if(e.key === "ArrowRight") nextBtn.click();
+        if(e.key === "ArrowLeft") prevBtn.click();
+    };
+
+    update();
+</script>
+
+</body>
+</html>
